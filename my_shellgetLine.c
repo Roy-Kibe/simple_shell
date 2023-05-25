@@ -157,15 +157,14 @@ int getLine(info_t *info, char **ptr, size_t *len_buff)
 }
 
 /**
- * HandleSigInt - blocks ctrl-C
- * @sigNumber: the signal number
+ * sigintHandler - blocks ctrl-C
+ * @sig_num: the signal number
  *
  * Return: void
  */
-void HandleSigint(__attribute__((unused))int sigNumber)
+void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
-
