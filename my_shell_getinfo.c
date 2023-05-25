@@ -51,7 +51,7 @@ void infoSet(info_t *info, char **argvect)
  */
 void infoFree(info_t *info, int all_fields)
 {
-	ffree(info->argv);
+	free_string_set(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all_fields)
@@ -64,9 +64,9 @@ void infoFree(info_t *info, int all_fields)
 			clear_list(&(info->history));
 		if (info->alias)
 			clear_list(&(info->alias));
-		ffree(info->environ);
+		free_string_set(info->environ);
 			info->environ = NULL;
-		bfree((void **)info->cmd_buf);
+		_freeptr((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);
